@@ -78,8 +78,13 @@ WSGI_APPLICATION = 'househarvest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('NEON_DATABASE_NAME'),
+        'USER': env('NEON_USER'),
+        'PASSWORD': env('NEON_PASSWORD'),
+        'HOST': env('NEON_HOST'),
+        'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'}
     }
 }
 
